@@ -1,0 +1,25 @@
+Function Merge(array, left, mid, right)
+    Create leftArray from array[left to mid]
+    Create rightArray from array[mid+1 to right]
+
+    i = 0, j = 0, k = left
+
+    While i < length of leftArray AND j < length of rightArray
+        If leftArray[i] <= rightArray[j]
+            array[k] = leftArray[i]
+            i = i + 1
+        Else
+            array[k] = rightArray[j]
+            j = j + 1
+        k = k + 1
+
+    While i < length of leftArray
+        array[k] = leftArray[i]
+        i = i + 1
+        k = k + 1
+
+    While j < length of rightArray
+        array[k] = rightArray[j]
+        j = j + 1
+        k = k + 1
+End Function
