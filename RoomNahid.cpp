@@ -32,8 +32,7 @@ Booking parseBooking(string room, string timeRange) {
 int main() {
     // Organize bookings by day and room
     map<string, map<string, vector<Booking>>> schedule;
-
-    // ===== Example bookings for Sunday =====
+   // ===== Example bookings for Sunday =====
     vector<tuple<string, string, string>> rawBookings = {
         {"108","Sunday","1:00 PM to 2:15 PM"},
 {"108","Sunday","2:15 PM to 3:30 PM"},
@@ -360,7 +359,7 @@ int main() {
     }
 
     // Sort bookings for each room by start time
-    for (auto &dayPair : schedule) {
+     for (auto &dayPair : schedule) {
         for (auto &roomPair : dayPair.second) {
             sort(roomPair.second.begin(), roomPair.second.end(), 
                  [](Booking a, Booking b){ return a.startMinutes < b.startMinutes; });
@@ -369,11 +368,11 @@ int main() {
 
     // User input
     string day, startTime, endTime;
-    cout << "Enter day (e.g., Sunday): ";
+    cout << "Enter day (e.g., Sunday) : ";
     getline(cin, day);
-    cout << "Enter start time (e.g., 10:15 AM): ";
+    cout << "Enter start time (e.g., 10:15 AM) : ";
     getline(cin, startTime);
-    cout << "Enter end time (e.g., 11:30 AM): ";
+    cout << "Enter end time (e.g., 11:30 AM) : ";
     getline(cin, endTime);
 
     int searchStart = toMinutes(startTime);
@@ -424,4 +423,5 @@ int main() {
     if (!anyFree) cout << "No rooms are free in this interval." << endl;
 
     return 0;
+
 }
