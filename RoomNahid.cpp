@@ -15,8 +15,8 @@ int toMinutes(string time) {
     stringstream ss(time);
     ss >> h >> colon >> m >> ampm;
 
-    if (ampm == "PM" && h != 12) h += 12;
-    if (ampm == "AM" && h == 12) h = 0;
+    if ((ampm == "PM"|| ampm=="pm") && h != 12) h += 12;
+    if ((ampm == "AM"|| ampm=="am") && h == 12) h = 0;
 
     return h * 60 + m;
 }
@@ -379,7 +379,7 @@ int main() {
     int searchEnd = toMinutes(endTime);
 
     if (schedule.find(day) == schedule.end()) {
-        cout << "No bookings for this day." << endl;
+        cout << "Oto class korar lagi jan jar ni!!" << endl;
         return 0;
     }
 
@@ -394,7 +394,8 @@ int main() {
         for (auto &b : bookings) {
             if (b.endMinutes <= current) continue; // booking before search
             if (b.startMinutes >= searchEnd) break; // booking after search
-            if (b.startMinutes > current) {
+            if (b.startMinutes > current)//start 12:45 & end 1:30 
+            {
                 freeSlots.push_back({current, min(searchEnd, b.startMinutes)});
             }
             current = max(current, b.endMinutes);
